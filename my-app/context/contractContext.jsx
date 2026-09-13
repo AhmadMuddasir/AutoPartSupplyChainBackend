@@ -8,6 +8,7 @@ const ContractContext = createContext(null);
 
 export const ContractProvider = ({children})=>{
      const {address,isConnected} = useAccount();
+     console.log("this is address:",address);
      const [signer,setSigner] = useState(null);
      const [provider,setProvider] = useState(null);
      const [contract,setContract] = useState(null);

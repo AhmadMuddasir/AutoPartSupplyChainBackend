@@ -217,6 +217,25 @@ contract AutoPartNFT_Pro is ERC721URIStorage, AccessControlEnumerable, ERC2981 {
         retailerRequests.push(msg.sender);
     }
 
+    function AddRetailerDirectly(
+        address _retailer,
+        string memory _name,
+        string memory _location
+    ) external onlyRole(MANUFACTURER_ROLE) {
+        require(!hasRole(RETAILER_ROLE, _retailer), "retailer Already exist");
+        require(
+            retailerDetails[_retailer].isApprove == false,
+            "retailer already added"
+        );
+    
+        _grantRole(RETAILER_ROLE, _retailer);
+        retailerDetails[_retailer] = RetailerDetails({
+            name: _name,
+            location: _location,
+            isApprove: true
+        });
+    }
+
     function addRetailer(
         address retailer
     ) external onlyRole(MANUFACTURER_ROLE) {
@@ -224,10 +243,7 @@ contract AutoPartNFT_Pro is ERC721URIStorage, AccessControlEnumerable, ERC2981 {
             retailerDetails[retailer].isApprove == false,
             "retailer already added"
         );
-        require(
-            bytes(retailerDetails[retailer].name).length > 0,
-            "Retailer request not found"
-        );
+
 
         _grantRole(RETAILER_ROLE, retailer);
         string memory _name = retailerDetails[retailer].name;

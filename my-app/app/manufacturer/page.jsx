@@ -4,6 +4,8 @@ import { ethers } from "ethers";
 import { useContract } from "@/context/contractContext";
 import ManufactureCard from "@/components/ManufactureCard";
 import { useEffect, useState } from "react";
+import { useConnections } from "wagmi";
+
 
 const Page = () => {
   

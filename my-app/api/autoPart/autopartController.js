@@ -15,8 +15,10 @@ const getContract = async () => {
 
 export const createautoPart = async (req, res, next) => {
   try {
+
     const autoPart = await AutoPart.create({
       ...req.body,
+      contractAddress: config.contractAddress,
       createdBy: {
         address: req.walletAddress,
         role: "manufacturer",
@@ -33,6 +35,8 @@ export const createautoPart = async (req, res, next) => {
     });
   }
 };
+
+
 
 export const getAllAutoParts = async (req, res, next) => {
   try {

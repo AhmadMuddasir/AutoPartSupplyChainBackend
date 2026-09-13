@@ -8,13 +8,6 @@ const autoPartSchema = new mongoose.Schema(
       trim: true,
       index: true,
     },
-    partNumber: {
-      type: String,
-      required: true,
-      trim: true,
-      uppercase: true,
-      index: true,
-    },
     brandName: {
       type: String,
       required: true,
@@ -112,7 +105,6 @@ const autoPartSchema = new mongoose.Schema(
 
 autoPartSchema.index({
   partName: "text",
-  partNumber: "text",
   brandName: "text",
 });
 
