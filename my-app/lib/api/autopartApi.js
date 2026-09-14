@@ -43,7 +43,7 @@ export const autopartApi = {
      sync: async (tokenId) => {
           const response = await apiClient.post(`/api/supplyChain/sync/${tokenId}`);
           return response.data;
-  },
+  },//cancel part detail we will use later
 
 }
 
